@@ -1,27 +1,23 @@
 import pandas as pd
+import cleaning_functions
 
 input_file="C:/Users/LENOVO/OneDrive/Documents/Desktop/Tourism-Data-Analysis/data/raw/Inbound Tourism-Accommodation.csv"
-df=pd.read_csv(input_file,encoding="latin1")
+df=cleaning_functions.load_file(input_file)
 
-years_columns=[str(year) for year in range(1995,2023)]
+years_columns=cleaning_functions.get_years_columns()
 
-df["Country"]=df["Basic data and indicators"].where(df["S."].fillna(-1)==0)
-df["Country"]=df["Country"].ffill()
+df=cleaning_functions.add_country_column(df)
 
 df["Accommodation Type"]=df["Unnamed: 5"].ffill()
 df["Indicator"]=df["Unnamed: 6"]
 df=df[df["Indicator"].notna()]
 
-df=df.melt(
-    id_vars=["Country","Accommodation Type","Indicator","Units"],
-    value_vars=years_columns,
-    var_name="Year",
-    value_name="Value"
- )
-df["Value"]=pd.to_numeric(df["Value"],errors="coerce")
+df=cleaning_functions.reshape_years(df,
+                                    ["Country","Accommodation Type","Indicator","Units"],
+                                    years_columns)
 
 output_file="C:/Users/LENOVO/OneDrive/Documents/Desktop/Tourism-Data-Analysis/data/cleaned/inbound_tourism_accommodation_cleaned.csv"
-df.to_csv(output_file,index=False)
+cleaning_functions.save_cleaned(df,output_file)
 print("cleaning completed")
 print(df.head(10))
 
