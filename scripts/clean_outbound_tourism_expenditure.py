@@ -14,6 +14,6 @@ df=cleaning_functions.reshape_years(df,
                                     ["Country","Indicator","Expenditure Type","Units"],
                                     years_columns)
 
-output_file="C:/Users/LENOVO/OneDrive/Documents/Desktop/Tourism-Data-Analysis/data/cleaned/outbound_tourism_expenditure.csv"
+output_file="C:/Users/LENOVO/OneDrive/Documents/Desktop/Tourism-Data-Analysis/data/cleaned/outbound_tourism_expenditure_cleaned.csv"
 cleaning_functions.save_cleaned(df,output_file)
 print("cleaning completed")
