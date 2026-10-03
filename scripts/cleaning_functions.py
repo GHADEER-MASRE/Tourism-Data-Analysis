@@ -19,6 +19,11 @@ def reshape_years(df,id_vars,years_columns):
         var_name="Year",
         value_name="Value"
     )
+    df["Value"] = (
+    df["Value"]
+    .astype(str)
+    .str.replace(",", "", regex=False)
+)
     df["Value"]=pd.to_numeric(df["Value"],errors="coerce")
     return df
 

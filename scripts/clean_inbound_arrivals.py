@@ -18,6 +18,7 @@ df=df[df["Indicator"]!=""]
 
 df=df[["Country","Indicator","Units"]+years_columns]
 
+
 df=cleaning_functions.reshape_years(df,
                                     ["Country","Indicator","Units"],
                                     years_columns)
@@ -27,14 +28,3 @@ output_file="C:/Users/LENOVO/OneDrive/Documents/Desktop/Tourism-Data-Analysis/da
 cleaning_functions.save_cleaned(df,output_file)
 
 print("cleaning completed")
-
-print(df.head(20))
-print("\nYear range:", df["Year"].min(), "-", df["Year"].max())
-print("Years:", sorted(df["Year"].unique()))
-print("\nValue data type:", df["Value"].dtype)
-print("Missing values:", df["Value"].isna().sum())
-print("\nMissing countries:", df["Country"].isna().sum())
-print("Missing indicators:", df["Indicator"].isna().sum())
-print("Unique indicators:", df["Indicator"].unique())
-print("\nDuplicate rows:", df.duplicated(subset=["Country", "Indicator", "Year"]).sum())
-print("\nshape:",df.shape)

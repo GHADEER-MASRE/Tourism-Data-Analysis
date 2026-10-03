@@ -19,6 +19,3 @@ cleaning_functions.save_cleaned(df,output_file)
 
 print("cleaning completed")
 
-print(df.shape)
-print(df.columns.to_list())
-print(df.head(10).to_string())
