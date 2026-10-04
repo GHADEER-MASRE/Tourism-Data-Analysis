@@ -13,8 +13,8 @@ The analysis will focus on answering the following questions:
 1. Which countries received the highest number of tourists during 2013–2022?
 2. What are the top 5 most visited countries, and what are the main purposes of visits to these countries?
 3. Which geographical regions are the main sources of inbound tourists?
-4. Which countries recorded the highest tourism expenditure?
-5. Which countries recorded the longest average length of stay?
+ 4. Which countries recorded the highest average annual travel expenditure among countries with sufficient data     availability during 2013–2022?
+5. Which countries recorded the longest average length of stay during 2013–2022?
 6. Is there a relationship between tourists' average length of stay and their expenditure?
 
 ## Datasets
@@ -46,8 +46,7 @@ The main cleaning steps included:
 - Converting year columns into a single `Year` column.
 - Extracting and organizing **Country** information.
 - Identifying the relevant **indicators and categories** for each dataset.
-- Converting numerical values using `pd.to_numeric()`.
-- Handling missing values by converting them to `NaN` instead of deleting them.
+- Cleaning and converting numerical values, including values containing thousands separators.- Handling missing values by converting them to `NaN` instead of deleting them.
 - Creating reusable functions for common cleaning operations.
 - Saving the cleaned datasets separately from the raw data.
 
@@ -70,6 +69,8 @@ All cleaned datasets were checked for structural consistency before moving to th
 
 ```text
 Tourism-Data-Analysis/
+|__analysis/
+|   |__SQL analysis results 
 │
 ├── data/
 │   ├── raw/
@@ -81,19 +82,32 @@ Tourism-Data-Analysis/
 ├── scripts/
 │   ├── cleaning_functions.py
 │   └── validate_cleaned_data.py
+|
+|__sql/
+|  ├── 01_top_visited_countries.sql
+│  ├── 02_top_5_countries_purpose.sql
+│  ├── 03_tourist_regions.sql
+│  ├── 04_tourism_expenditure.sql
+│  ├── 05_average_length_of_stay.sql
+│  └── 06_stay_vs_expenditure.sql
 │
 └── README.md
 
 
 ## Tools & Technologies
 
-- **Python** – Data processing and analysis
-- **Pandas** – Data cleaning and transformation
+## Tools & Technologies
+
+- **Python** – Data processing and cleaning
+- **Pandas** – Data transformation
+- **PostgreSQL** – Data storage and SQL analysis
+- **SQL** – Analytical queries
 - **Git & GitHub** – Version control and project management
+- **Power BI** – Data visualization and dashboarding
 
 ## Next Steps
 
-- Analyze tourism trends and patterns.
-- Answer the analytical questions using the cleaned datasets.
-- Create visualizations to communicate the findings.
-- Extract meaningful insights from the analysis.
+- Build interactive dashboards using Power BI.
+- Visualize the key findings from the SQL analysis.
+- Identify and communicate the main tourism trends and insights.
+- Document the final results and insights in the project README.
